@@ -6,6 +6,9 @@ import PostsHeader from './postsheader';
 import { FaTimes } from 'react-icons/fa';
 import { useAuth } from './authcontext';
 
+const apiBaseUrl = import.meta.env.BACKEND_URI;
+
+
 
 const Post = () => {
     const [posts, setPosts] = useState([]);
@@ -17,7 +20,7 @@ const Post = () => {
         const fetchPosts = async () => {
             try {
                 const token = localStorage.getItem('authToken');
-                const response = await axios.get('http://localhost:3000/posts', {
+                const response = await axios.get('${apiBaseUrl}/posts', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setPosts(response.data);
@@ -39,7 +42,7 @@ const Post = () => {
 
         try {
             const token = localStorage.getItem('authToken');
-            const response = await axios.delete(`http://localhost:3000/posts/delete-post/${postID}`, {
+            const response = await axios.delete(`${apiBaseUrl}/posts/delete-post/${postID}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             if (response.status === 200) {

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/createpost.css';
 
+const apiBaseUrl = import.meta.env.BACKEND_URI;
+
 const CreatePost = () => {
     const navigate = useNavigate();
     const [title, setTitle] = useState('');
@@ -13,7 +15,7 @@ const CreatePost = () => {
 
         try {
             const token = localStorage.getItem('authToken');
-            await axios.post('http://localhost:3000/posts/create-post', 
+            await axios.post('${apiBaseUrl}/posts/create-post', 
                 { title, content },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

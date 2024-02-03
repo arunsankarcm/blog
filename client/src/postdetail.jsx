@@ -5,6 +5,9 @@ import axios from 'axios';
 import './css/postdetail.css';
 import { useAuth } from './authcontext';
 
+const apiBaseUrl = import.meta.env.BACKEND_URI;
+
+
 const PostDetails = () => {
     const [post, setPost] = useState(null);
     const [comments, setComments] = useState([]);
@@ -22,10 +25,10 @@ const PostDetails = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 };
 
-                const postResponse = await axios.get(`http://localhost:3000/posts/${postID}`, config);
+                const postResponse = await axios.get(`${apiBaseUrl}/posts/${postID}`, config);
                 setPost(postResponse.data);
 
-                const commentsResponse = await axios.get(`http://localhost:3000/posts/${postID}/comments`, config);
+                const commentsResponse = await axios.get(`${apiBaseUrl}/posts/${postID}/comments`, config);
                 setComments(commentsResponse.data);
             } catch (error) {
                 console.error('Error fetching post:', error);
@@ -40,7 +43,7 @@ const PostDetails = () => {
         try {
             const token = localStorage.getItem('authToken');
             const response = await axios.post(
-                `http://localhost:3000/posts/${postID}/add-comment`,
+                `${apiBaseUrl}/posts/${postID}/add-comment`,
                 { message: newComment },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -59,7 +62,7 @@ const PostDetails = () => {
 
         try {
             const token = localStorage.getItem('authToken');
-            await axios.delete(`http://localhost:3000/posts/${postID}/${commentID}/delete-comment`, {
+            await axios.delete(`${apiBaseUrl}/posts/${postID}/${commentID}/delete-comment`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setComments(comments.filter((comment) => comment._id !== commentID));
@@ -78,7 +81,7 @@ const PostDetails = () => {
 
     try {
         const token = localStorage.getItem('authToken');
-        await axios.patch(`http://localhost:3000/posts/${postID}/${editCommentId}/edit-comment`,
+        await axios.patch(`${apiBaseUrl}/posts/${postID}/${editCommentId}/edit-comment`,
             { message: editedComment },
             { headers: { Authorization: `Bearer ${token}` } }
         );

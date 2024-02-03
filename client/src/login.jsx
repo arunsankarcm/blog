@@ -4,6 +4,9 @@ import { useAuth } from './authcontext';
 import { useNavigate } from 'react-router-dom';
 import './css/login.css';
 
+const apiBaseUrl = import.meta.env.BACKEND_URI;
+
+
 const Login = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('')
@@ -13,7 +16,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/users/login', { username, password });
+            const response = await axios.post('${apiBaseUrl}/users/login', { username, password });
             localStorage.setItem('authToken', response.data.token);
             localStorage.setItem('isAdmin', response.data.isAdmin);
             login(response.data.token, response.data.isAdmin);

@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/signup.css';
 
+const apiBaseUrl = import.meta.env.BACKEND_URI;
+
+
 const Signup = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
@@ -18,7 +21,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:3000/users/signup', { username, password });
+            const response = await axios.post('${apiBaseUrl}/users/signup', { username, password });
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 400) {
