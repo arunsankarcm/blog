@@ -25,7 +25,7 @@ async function main() {
 
 // CORS configuration for a specific origin
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'https://blog3-sigma.vercel.app/'
 }));
 
 
