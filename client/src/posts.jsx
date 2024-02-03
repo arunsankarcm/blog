@@ -20,7 +20,7 @@ const Post = () => {
         const fetchPosts = async () => {
             try {
                 const token = localStorage.getItem('authToken');
-                const response = await axios.get('${apiBaseUrl}/posts', {
+                const response = await axios.get(`${apiBaseUrl}/posts`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setPosts(response.data);

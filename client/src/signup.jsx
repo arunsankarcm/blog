@@ -21,7 +21,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await axios.post('${apiBaseUrl}/users/signup', { username, password });
+            const response = await axios.post(`${apiBaseUrl}/users/signup`, { username, password });
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 400) {

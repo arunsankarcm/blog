@@ -15,7 +15,7 @@ const CreatePost = () => {
 
         try {
             const token = localStorage.getItem('authToken');
-            await axios.post('${apiBaseUrl}/posts/create-post', 
+            await axios.post(`${apiBaseUrl}/posts/create-post`, 
                 { title, content },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
