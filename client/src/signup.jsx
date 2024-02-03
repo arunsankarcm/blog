@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/signup.css';
 
-const apiBaseUrl = import.meta.env.BACKEND_URI;
+const apiBaseUrl = import.meta.env.VITE_BACKEND_URI;
 
 
 const Signup = () => {

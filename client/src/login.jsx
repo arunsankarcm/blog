@@ -4,7 +4,7 @@ import { useAuth } from './authcontext';
 import { useNavigate } from 'react-router-dom';
 import './css/login.css';
 
-const apiBaseUrl = import.meta.env.BACKEND_URI;
+const apiBaseUrl = import.meta.env.VITE_BACKEND_URI;
 
 
 const Login = () => {

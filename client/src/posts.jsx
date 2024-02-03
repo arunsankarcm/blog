@@ -6,7 +6,7 @@ import PostsHeader from './postsheader';
 import { FaTimes } from 'react-icons/fa';
 import { useAuth } from './authcontext';
 
-const apiBaseUrl = import.meta.env.BACKEND_URI;
+const apiBaseUrl = import.meta.env.VITE_BACKEND_URI;
 
 
 
