@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require('dotenv').config();
-const cors = require('cors');
+
 
 
 const indexRouter = require('./routes/index');
@@ -23,10 +23,7 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-// CORS configuration for a specific origin
-app.use(cors({
-  origin: 'https://blog3-sigma.vercel.app/'
-}));
+
 
 
 // view engine setup
